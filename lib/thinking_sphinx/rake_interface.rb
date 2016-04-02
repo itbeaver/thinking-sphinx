@@ -46,7 +46,7 @@ class ThinkingSphinx::RakeInterface
   end
 
   def start
-    raise RuntimeError, 'searchd is already running' if controller.running?
+    return if controller.running?
 
     FileUtils.mkdir_p configuration.indices_location
     controller.start
